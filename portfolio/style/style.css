@@ -1,0 +1,475 @@
+/* --------------Global-------------- */
+
+:root {
+    --color-dark: #000000;
+    --color-gold: #bdae82;
+    --color-white: #ffffff;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    border: 0;
+    clip-path: inset(100%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+.page__body {
+    font-family: 'Inter';
+    font-size: 20px;
+    color: var(--color-white);
+    background-color: var(--color-dark);
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1 {
+    font-family: "Merriweather";
+    font-size: 60px;
+    line-height: 120px;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+.button {
+    font-family: inherit;
+    line-height: 40px;
+    white-space: nowrap;
+
+    color: var(--color-white);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.button--gold,
+.button--transparent {
+    min-width: 220px;
+}
+
+.button--gold {
+    padding-top: 8px;
+    padding-bottom: 7px;
+    color: var(--color-dark);
+    background-color: #BDAE82;
+    transition: color .5s;
+}
+
+.button--transparent {
+    padding-top: 6px;
+    padding-right: 70px;
+    padding-bottom: 5px;
+    padding-left: 68px;
+
+    color: var(--color-gold);
+    border: 2px solid #BDAE82;
+    transition: color .5s;
+}
+
+.button--gold:hover,
+.button--transparent:hover {
+    color: var(--color-white);
+}
+
+.button--active {
+    color: var(--color-dark);
+    background: var(--color-gold);
+}
+
+/* --------------Page-header-------------- */
+
+.page-header {
+    min-height: 90px;
+    line-height: 50px;
+
+    background-image: url("../assets/img/bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center 0;
+}
+
+.page-header .container {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.page-header__logo {
+    display: flex;
+    justify-content: center;
+}
+
+.page-header__icon {
+    fill: var(--color-white);
+    transition: fill .5s;
+}
+
+.page-header__icon:hover {
+    fill: var(--color-gold);
+}
+
+.page-header__main-nav {
+    margin-left: auto;
+}
+
+.main-nav__list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main-nav__link {
+    padding: 15px 0;
+    margin-right: 31px;
+    text-decoration: none;
+
+    color: var(--color-white);
+    transition: color .5s;
+}
+
+.main-nav__link:hover {
+    color: var(--color-gold);
+}
+
+.page-header__switch-language {
+    display: flex;
+    justify-content: space-between;
+    min-width: 69px;
+    font-weight: bold;
+}
+
+.radio__label {
+    cursor: pointer;
+}
+
+.radio__label:hover {
+    color: var(--color-gold);
+    transition: color .5s;
+}
+
+.radio__input:checked+label {
+    color: var(--color-gold);
+}
+
+/* --------------Hero-------------- */
+
+.hero {
+    background-image: url('../assets/img/bg.jpg');
+    background-position: center -90px;
+    background-repeat: no-repeat;
+}
+
+.hero__inner {
+    max-width: 600px;
+    padding-top: 160px;
+    padding-right: 60px;
+    padding-bottom: 330px;
+    padding-left: 60px;
+}
+
+.hero__title {
+    margin-bottom: 10px;
+}
+
+.hero__desc {
+    margin-bottom: 25px;
+    line-height: 40px;
+}
+
+/* --------------Section-title-------------- */
+
+.section-title__wrapper {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.section-title {
+    display: grid;
+    grid-template-columns: 1fr min-content 1fr;
+    column-gap: 20px;
+    align-items: center;
+    margin: 0;
+    margin-bottom: 60px;
+
+    font-family: "Merriweather";
+    text-align: center;
+    font-size: 40px;
+    line-height: 80px;
+
+    color: var(--color-gold);
+}
+
+.section-title::before,
+.section-title::after {
+    content: "";
+    height: 2px;
+
+    background-color: var(--color-gold);
+}
+
+/* --------------Skills-------------- */
+
+.skills {
+    padding-top: 100px;
+}
+
+.skills__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 40px;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.skills__item {
+    text-align: center;
+    max-width: 320px;
+    padding: 0 20px;
+}
+
+.skills__icon {
+    margin-bottom: 54px;
+}
+
+.skills__title {
+    margin-bottom: 29px;
+    font-weight: bold;
+}
+
+.skills__desc {
+    font-size: 18px;
+    line-height: 36px;
+}
+
+/* --------------Portfolio-------------- */
+
+.portfolio {
+    padding-top: 109px;
+}
+
+.portfolio__buttons {
+    display: flex;
+    justify-content: center;
+    column-gap: 5px;
+    margin-bottom: 60px;
+}
+
+.portfolio__items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 25px;
+}
+
+/* --------------Video-------------- */
+
+.video {
+    padding-top: 100px;
+}
+
+.video-player {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 705px;
+
+    background-image: url("../assets/img/video-player.jpg");
+}
+
+.video-player__button {
+    position: absolute;
+    fill: var(--color-white);
+    transition: fill .5s;
+}
+
+.video-player__button:hover {
+    fill: var(--color-gold);
+}
+
+/* --------------Price-------------- */
+
+.price {
+    padding-top: 100px;
+    margin-bottom: 100px;
+}
+
+.price__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 25px;
+    text-align: center;
+}
+
+.price__card {
+    padding: 40px;
+    border: 3px solid var(--color-gold);
+}
+
+.price__title,
+.price__value {
+    font-family: "Merriweather";
+}
+
+.price__value {
+    color: var(--color-gold);
+}
+
+.price__title {
+    margin: 0;
+    margin-bottom: 21px;
+    font-size: 28px;
+    line-height: 56px;
+}
+
+.price__value {
+    margin-bottom: 20px;
+    font-size: 24px;
+    line-height: 48px;
+}
+
+.price__desc {
+    font-size: 18px;
+    line-height: 36px;
+    margin-bottom: 39px;
+}
+
+.price__desc span {
+    display: block;
+}
+
+/* --------------Contacts-------------- */
+
+.contacts {
+    background-image: url("../assets/img/contacts.jpg");
+    background-size: auto 700px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.contacts__inner {
+    max-width: 450px;
+    margin-left: auto;
+    padding-top: 60px;
+    padding-bottom: 195px;
+}
+
+.contacts__title {
+    margin: 0;
+    margin-bottom: 40px;
+    font-family: "Merriweather";
+    text-align: left;
+    font-size: 40px;
+    line-height: 80px;
+
+    color: var(--color-gold);
+}
+
+.contacts__input {
+    width: 100%;
+    padding: 12px 18px;
+    padding-bottom: 11px;
+    margin-bottom: 20px;
+
+    border: 2px solid #BDAE82;
+    color: var(--color-gold);
+    background: transparent;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.contacts__input--textarea {
+    margin-bottom: 25px;
+}
+
+textarea {
+    min-height: 100px;
+    resize: none;
+}
+
+::placeholder {
+    font-family: inherit;
+    color: var(--color-gold);
+    font-size: 20px;
+}
+
+/* --------------Page-footer-------------- */
+
+.page-footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+.page-footer__desc span {
+    margin-right: 15px;
+}
+
+.page-footer__github,
+.page-footer__rsschool {
+    line-height: 50px;
+    text-decoration: none;
+    color: var(--color-white);
+    transition: color .5s;
+}
+
+.page-footer__github:hover,
+.page-footer__rsschool:hover {
+    color: var(--color-gold);
+}
+
+.page-footer__rsschool {
+    padding-left: 18px;
+}
+
+.page-footer__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.page-footer__item {
+    margin-left: 20px;
+}
+
+.page-footer__item:first-child {
+    margin-left: 0;
+}
+
+.page-footer__link {
+    fill: var(--color-white);
+    transition: fill .5s;
+}
+
+.page-footer__link:hover {
+    fill: var(--color-gold);
+}
