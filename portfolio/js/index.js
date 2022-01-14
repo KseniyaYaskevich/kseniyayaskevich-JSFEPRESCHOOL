@@ -1,15 +1,26 @@
 // Anchor---------------------------
 
 const headerNav = document.querySelector('.main-nav__list');
+const navMain = document.querySelector('.main-nav');
 
-const buttonToScroll = function (evt) {
-  evt.preventDefault();
-  const id = evt.target.getAttribute('href');
+const closeMenu = function (event) {
+        if (event.target.classList.contains('main-nav__link')) {
+                document.body.classList.remove('_lock');
+                navMain.classList.remove('main-nav--opened');
+        }
+}
 
+const buttonToScroll = function (event) {
+        event.preventDefault();
+        const id = event.target.getAttribute('href');
+        navMain.addEventListener('click', closeMenu);
+        if (id) {
   document.querySelector(id).scrollIntoView({
     behavior: 'smooth',
     block: 'start',
   });
+        }
+
 };
 
 headerNav.addEventListener('click', buttonToScroll);
