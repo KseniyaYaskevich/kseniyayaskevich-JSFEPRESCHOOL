@@ -14,6 +14,18 @@ const buttonToScroll = function (evt) {
 
 headerNav.addEventListener('click', buttonToScroll);
 
+// Menu---------------------------
+
+const navToggle = document.querySelector('.main-nav__toggle');
+
+const navToggleOnClick = () => {
+        document.body.classList.toggle('_lock');
+        navMain.classList.toggle('main-nav--opened');
+};
+
+if (navToggle) {
+        navToggle.addEventListener('click', navToggleOnClick);
+}
 
 // Self-check---------------------------
 
