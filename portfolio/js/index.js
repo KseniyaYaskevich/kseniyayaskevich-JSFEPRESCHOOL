@@ -1,23 +1,48 @@
 // Anchor---------------------------
 
 const headerNav = document.querySelector('.main-nav__list');
+const navMain = document.querySelector('.main-nav');
 
-const buttonToScroll = function (evt) {
-  evt.preventDefault();
-  const id = evt.target.getAttribute('href');
+const closeMenu = function (event) {
+        if (event.target.classList.contains('main-nav__link')) {
+                document.body.classList.remove('_lock');
+                navMain.classList.remove('main-nav--opened');
+        }
+}
 
-  document.querySelector(id).scrollIntoView({
-    behavior: 'smooth',
-    block: 'start',
-  });
+const buttonToScroll = function (event) {
+        event.preventDefault();
+        const id = event.target.getAttribute('href');
+        navMain.addEventListener('click', closeMenu);
+        if (id) {
+                document.querySelector(id).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start',
+                });
+        }
+
 };
 
 headerNav.addEventListener('click', buttonToScroll);
 
+// Menu---------------------------
+
+const navToggle = document.querySelector('.main-nav__toggle');
+
+const navToggleOnClick = () => {
+        document.body.classList.toggle('_lock');
+        navMain.classList.toggle('main-nav--opened');
+};
+
+if (navToggle) {
+        navToggle.addEventListener('click', navToggleOnClick);
+}
 
 // Self-check---------------------------
 
 console.log(`
+                Portfolio #1
+
 1. Вёрстка валидная +10
         + для проверки валидности вёрстки используйте сервис https://validator.w3.org/
 
@@ -57,7 +82,36 @@ console.log(`
         + ссылки в футере ведут на гитхаб автора проекта и на страницу курса https://rs.school/js-stage0/ +5
         + интерактивность включает в себя не только изменение внешнего вида курсора, например, при помощи свойства cursor: pointer, но и другие визуальные эффекты, например, изменение цвета фона или цвета шрифта. Если в макете указаны стили при наведении и клике, для элемента указываем эти стили. Если в макете стили не указаны, реализуете их по своему усмотрению, руководствуясь общим стилем макета +5
         + обязательное требование к интерактивности: плавное изменение внешнего вида элемента при наведении и клике не влияющее на соседние элементы +5
-
         
         110/110
+`);
+
+console.log(`
+                Portfolio #2
+
+1. Вёрстка соответствует макету. Ширина экрана 768px +48
+        + блок <header> +6
+        + секция hero +6
+        + секция skills +6
+        + секция portfolio +6
+        + секция video +6
+        + секция price +6
+        + секция contacts +6
+        + блок <footer> +6
+
+2. Ни на одном из разрешений до 320px включительно не появляется горизонтальная полоса прокрутки +15
+        + нет полосы прокрутки при ширине страницы от 1440рх до 768рх +5
+        + нет полосы прокрутки при ширине страницы от 768рх до 480рх +5
+        + нет полосы прокрутки при ширине страницы от 480рх до 320рх +5
+
+3. На ширине экрана 768рх и меньше реализовано адаптивное меню +22
+        + при ширине страницы 768рх панель навигации скрывается, появляется бургер-иконка +2
+        + при нажатии на бургер-иконку справа плавно появляется адаптивное меню, бургер-иконка изменяется на крестик +4
+        + высота адаптивного меню занимает всю высоту экрана. При ширине экрана 768-620рх вёрстка меню соответствует макету, когда экран становится уже, меню занимает всю ширину экрана +4
+        + при нажатии на крестик адаптивное меню плавно скрывается уезжая за правую часть экрана, крестик превращается в бургер-иконку +4
+        + бургер-иконка, которая при клике превращается в крестик, создана при помощи css-анимаций без использования изображений +2
+        + ссылки в адаптивном меню работают, обеспечивая плавную прокрутку по якорям +2
+        + при клике по ссылке в адаптивном меню адаптивное меню плавно скрывается, крестик превращается в бургер-иконку +4
+
+        85/85
 `);
