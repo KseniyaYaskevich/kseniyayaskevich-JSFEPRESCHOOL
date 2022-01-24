@@ -595,6 +595,11 @@ p {
         bottom: 0;
     }
 
+    .main-nav__toggle:hover span,
+    .main-nav__toggle:hover::before,
+    .main-nav__toggle:hover::after{
+        background-color: var(--color-gold);
+    }
 
     .main-nav--opened .main-nav__toggle {
         width: 50px;
