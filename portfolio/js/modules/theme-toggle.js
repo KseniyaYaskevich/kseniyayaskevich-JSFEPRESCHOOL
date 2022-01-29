@@ -1,4 +1,11 @@
 // Change theme---------------------------
+const prefersLightScheme = window.matchMedia('(prefers-color-scheme: light)');
+
+if (prefersLightScheme.matches) {
+        document.body.classList.add('light-theme');
+} else {
+        document.body.classList.remove('light-theme');
+}
 
 const themeToggle = document.querySelector('.theme-toggle');
 

@@ -10,16 +10,17 @@ const getLocalStorage = function () {
         const lang = localStorage.getItem('lang');
         getTranslate(lang);
         if (lang === 'ru') {
-            ru.setAttribute('checked', 'checked');
+            ru.checked = true;
         }
         if (lang === 'en') {
-            en.setAttribute('checked', 'checked');
+            en.checked = true;
         }
     } else {
-        en.setAttribute('checked', 'checked');
+        en.checked = true;
     }
 
     const currentTheme = localStorage.getItem("theme");
+
     if (currentTheme == "light") {
         document.body.classList.add("light-theme");
         document.body.classList.remove("dark-theme");
