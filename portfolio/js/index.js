@@ -1,42 +1,7 @@
-// Anchor---------------------------
-
-const headerNav = document.querySelector('.main-nav__list');
-const navMain = document.querySelector('.main-nav');
-
-const closeMenu = function (event) {
-        if (event.target.classList.contains('main-nav__link')) {
-                document.body.classList.remove('_lock');
-                navMain.classList.remove('main-nav--opened');
-        }
-}
-
-const buttonToScroll = function (event) {
-        event.preventDefault();
-        const id = event.target.getAttribute('href');
-        navMain.addEventListener('click', closeMenu);
-        if (id) {
-                document.querySelector(id).scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start',
-                });
-        }
-
-};
-
-headerNav.addEventListener('click', buttonToScroll);
-
-// Menu---------------------------
-
-const navToggle = document.querySelector('.main-nav__toggle');
-
-const navToggleOnClick = () => {
-        document.body.classList.toggle('_lock');
-        navMain.classList.toggle('main-nav--opened');
-};
-
-if (navToggle) {
-        navToggle.addEventListener('click', navToggleOnClick);
-}
+import './modules/menu.js';
+import './modules/switch-language.js';
+import './modules/theme-toggle.js';
+import './modules/portfolio-images.js';
 
 // Self-check---------------------------
 
