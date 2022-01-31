@@ -1,4 +1,5 @@
-// Change theme---------------------------
+import * as storage from './storage.js'
+
 const prefersLightScheme = window.matchMedia('(prefers-color-scheme: light)');
 
 if (prefersLightScheme.matches) {
@@ -17,11 +18,13 @@ const themeToggleOnClick = () => {
                 document.body.classList.remove('dark-theme');
                 document.body.classList.add('light-theme');
         }
+
         let theme = "dark";
+
         if (document.body.classList.contains("light-theme")) {
                 theme = "light";
         }
-        localStorage.setItem("theme", theme);
+        storage.setItem("theme", theme);
 
 };
 

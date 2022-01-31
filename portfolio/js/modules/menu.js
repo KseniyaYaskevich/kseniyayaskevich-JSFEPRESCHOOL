@@ -1,44 +1,37 @@
-// Menu---------------------------
-
 const navMain = document.querySelector('.main-nav');
-const navToggle = document.querySelector('.main-nav__toggle');
-const bodyOverlay = document.querySelector('.page__body__overlay');
+const navToggle = navMain.querySelector('.main-nav__toggle');
+const mainNavList = navMain.querySelector('.main-nav__list');
 
-const navToggleOnClick = () => {
-        document.body.classList.toggle('_lock');
-        navMain.classList.toggle('main-nav--opened');
-        bodyOverlay.classList.toggle('active');
-};
-
-if (navToggle) {
-        navToggle.addEventListener('click', navToggleOnClick);
-}
-
-// Anchor---------------------------
-
-const headerNav = document.querySelector('.main-nav__list');
-
-const closeMenu = function (event) {
-        if (event.target.classList.contains('main-nav__link')) {
-                document.body.classList.remove('_lock');
+const closeMenu = (evt) => {
+        if (evt.target.classList.contains('main-nav__link')) {
+                document.body.classList.remove('page__body--lock');
                 navMain.classList.remove('main-nav--opened');
-                bodyOverlay.classList.remove('active');
         }
 }
 
-const buttonToScroll = function (event) {
-        event.preventDefault();
-        const id = event.target.getAttribute('href');
-        navMain.addEventListener('click', closeMenu);
+const onNavToggleClick = () => {
+        document.body.classList.toggle('page__body--lock');
+        navMain.classList.toggle('main-nav--opened');
+};
+
+const onMainNavListClick = (evt) => {
+        evt.preventDefault();
+
+        const id = evt.target.getAttribute('href');
+        const section = document.querySelector(id);
         if (id) {
-                document.querySelector(id).scrollIntoView({
+                section.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start',
                 });
         }
+        closeMenu(evt);
 };
 
-if (headerNav) {
-    headerNav.addEventListener('click', buttonToScroll);
+if (navToggle) {
+        navToggle.addEventListener('click', onNavToggleClick);
 }
 
+if (mainNavList) {
+        mainNavList.addEventListener('click', onMainNavListClick);
+}
