@@ -2,8 +2,8 @@ import * as storage from './storage.js'
 
 const themeToggle = document.querySelector('.theme-toggle');
 
-const themeToggleOnClick = () => {
-        if (document.body.classList.contains("light-theme")) {
+const onThemeToggleClick = () => {
+        if (document.body.classList.contains('light-theme')) {
                 document.body.classList.remove('light-theme');
                 document.body.classList.add('dark-theme');
         } else {
@@ -11,15 +11,15 @@ const themeToggleOnClick = () => {
                 document.body.classList.add('light-theme');
         }
 
-        let theme = "dark";
+        let theme = 'dark';
 
-        if (document.body.classList.contains("light-theme")) {
-                theme = "light";
+        if (document.body.classList.contains('light-theme')) {
+                theme = 'light';
         }
-        storage.setItem("theme", theme);
+        storage.setItem('theme', theme);
 
 };
 
 if (themeToggle) {
-        themeToggle.addEventListener('click', themeToggleOnClick);
+        themeToggle.addEventListener('click', onThemeToggleClick);
 }

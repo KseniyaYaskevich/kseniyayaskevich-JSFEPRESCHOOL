@@ -558,19 +558,26 @@ p {
 
 .video__player {
     position: relative;
+
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
     min-height: 705px;
+}
 
-    background-image: url("../assets/img/video-player.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
+.video__viewer {
+    width: 100%;
+    height: auto;
+
+    border: 1px solid #bdae82;
+    border-bottom: 0;
 }
 
 .video__button {
     position: absolute;
+
     width: 130px;
     height: 130px;
     padding: 0;
@@ -581,6 +588,63 @@ p {
 
 .video__button:hover {
     fill: var(--color-gold);
+}
+
+.video__controls {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 100%;
+    min-height: 60px;
+
+    border: 1px solid #bdae82;
+    border-top: 0;
+}
+
+.controls__icon {
+    width: 40px;
+    height: 36px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.controls__icon--play {
+    background-image: url("../assets/svg/play.svg");
+}
+
+.controls__icon--volume {
+    background-image: url("../assets/svg/volume.svg");
+}
+
+.controls__slider--progress,
+.controls__slider--volume {
+    background: linear-gradient(to right, #bdae82 0%, #bdae82 0%, #c8c8c8 0%, #c8c8c8 100%);
+    height: 10px;
+
+    outline: none;
+    transition: background 450ms ease-in;
+    -webkit-appearance: none;
+}
+
+.controls__slider--progress {
+    width: calc(80% - 160px);
+}
+
+.controls__slider--volume {
+    background: linear-gradient(to right, #bdae82 0%, #bdae82 40%, #c8c8c8 40%, #c8c8c8 100%);
+}
+
+.controls__slider--progress::-webkit-slider-thumb,
+.controls__slider--volume::-webkit-slider-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    -webkit-appearance: none;
+    cursor: ew-resize;
+    background: #fff;
 }
 
 /* --------------Price-------------- */
@@ -1129,7 +1193,7 @@ p {
     .page-header .container {
         padding-right: 10px;
     }
-    
+
     .main-nav__list {
         padding-right: 0;
         padding-left: 0;
