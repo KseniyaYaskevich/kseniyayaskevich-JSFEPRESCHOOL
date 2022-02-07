@@ -572,7 +572,6 @@ p {
     height: auto;
 
     border: 1px solid #bdae82;
-    border-bottom: 0;
 }
 
 .video__button {
@@ -643,7 +642,7 @@ p {
 }
 
 .controls__slider--volume {
-    background: linear-gradient(to right, #bdae82 0%, #bdae82 40%, #c8c8c8 40%, #c8c8c8 100%);
+    background: linear-gradient(to right, #bdae82 0%, #bdae82 100%, #c8c8c8 100%, #c8c8c8 100%);
 }
 
 .controls__slider--progress::-webkit-slider-thumb,
