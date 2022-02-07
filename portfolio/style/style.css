@@ -572,7 +572,6 @@ p {
     height: auto;
 
     border: 1px solid #bdae82;
-    border-bottom: 0;
 }
 
 .video__button {
@@ -591,6 +590,10 @@ p {
 }
 
 .video__controls {
+    display: none;
+}
+
+.video__controls--active {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -619,6 +622,11 @@ p {
     background-image: url("../assets/svg/volume.svg");
 }
 
+.controls__icon--play:hover,
+.controls__icon--volume:hover {
+    filter: invert(0%) sepia(9%) saturate(1114%) hue-rotate(7deg) brightness(88%) contrast(85%);
+}
+
 .controls__slider--progress,
 .controls__slider--volume {
     background: linear-gradient(to right, #bdae82 0%, #bdae82 0%, #c8c8c8 0%, #c8c8c8 100%);
@@ -634,7 +642,7 @@ p {
 }
 
 .controls__slider--volume {
-    background: linear-gradient(to right, #bdae82 0%, #bdae82 40%, #c8c8c8 40%, #c8c8c8 100%);
+    background: linear-gradient(to right, #bdae82 0%, #bdae82 100%, #c8c8c8 100%, #c8c8c8 100%);
 }
 
 .controls__slider--progress::-webkit-slider-thumb,
