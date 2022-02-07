@@ -591,6 +591,10 @@ p {
 }
 
 .video__controls {
+    display: none;
+}
+
+.video__controls--active {
     display: flex;
     justify-content: space-around;
     align-items: center;
