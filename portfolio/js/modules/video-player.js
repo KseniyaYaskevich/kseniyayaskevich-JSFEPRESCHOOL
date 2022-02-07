@@ -1,5 +1,6 @@
 const player = document.querySelector('.video__player');
 const video = player.querySelector('.video__viewer');
+const videoControls = player.querySelector('.video__controls')
 const videoButton = player.querySelector('.video__button');
 const playButton = player.querySelector('.controls__icon--play');
 const volumeButton = player.querySelector('.controls__icon--volume');
@@ -15,6 +16,13 @@ const updateVideo = (evt) => {
 const updateVolume = (evt) => {
     const volume = evt.target.value;
     video.volume = volume / 100;
+    if (video.volume == 0) {
+        video.muted = true;
+        volumeButton.style.backgroundImage = 'url("./assets/svg/mute.svg")';
+    } else {
+        video.muted = false;
+        volumeButton.style.backgroundImage = 'url("./assets/svg/volume.svg")';
+    }
 };
 
 const rangeUpdate = (evt) => {
@@ -28,9 +36,11 @@ const progressUpdate = () => {
     let currentTime = video.currentTime;
     progress.value = 100 * currentTime / duration;
     progress.style.background = `linear-gradient(to right, #bdae82 0%, #bdae82 ${progress.value}%, #c8c8c8 ${progress.value}%, #c8c8c8 100%)`;
-}
+};
 
 const onPlayToggleClick = () => {
+    videoControls.classList.add('video__controls--active');
+
     if (video.paused) {
         video.play();
         playButton.style.backgroundImage = 'url("./assets/svg/pause.svg")';
@@ -42,15 +52,28 @@ const onPlayToggleClick = () => {
     }
 };
 
+let actualValue = 0;
+
 const onVolumeToggleClick = () => {
-    if (video.muted) {
+
+    let firstValue = video.volume;
+
+    if (video.volume === 0) {
+        video.volume = actualValue;
+        volume.value = actualValue * 100;
         volumeButton.style.backgroundImage = 'url("./assets/svg/volume.svg")';
-        video.muted = false;
+
+        volume.style.background = `linear-gradient(to right, #bdae82 0%, #bdae82 ${volume.value}%, #c8c8c8 ${volume.value}%, #c8c8c8 100%)`;
+
     } else {
-        video.muted = true;
+        video.volume = 0;
+        volume.value = 0;
         volumeButton.style.backgroundImage = 'url("./assets/svg/mute.svg")';
+
+        volume.style.background = `linear-gradient(to right, #bdae82 0%, #bdae82 0%, #c8c8c8 0%, #c8c8c8 100%)`;
     }
-}
+    actualValue = firstValue;
+};
 
 progress.addEventListener('click', updateVideo);
 progress.addEventListener('mousemove', (evt) => mousedown && updateVideo(evt));
@@ -65,7 +88,6 @@ volume.addEventListener('mouseup', () => mousedown = false);
 volume.addEventListener('input', rangeUpdate);
 
 video.addEventListener('timeupdate', progressUpdate);
-
 video.addEventListener('click', onPlayToggleClick);
 videoButton.addEventListener('click', onPlayToggleClick);
 playButton.addEventListener('click', onPlayToggleClick);
