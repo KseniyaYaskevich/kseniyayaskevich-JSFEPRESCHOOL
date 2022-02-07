@@ -623,6 +623,11 @@ p {
     background-image: url("../assets/svg/volume.svg");
 }
 
+.controls__icon--play:hover,
+.controls__icon--volume:hover {
+    filter: invert(0%) sepia(9%) saturate(1114%) hue-rotate(7deg) brightness(88%) contrast(85%);
+}
+
 .controls__slider--progress,
 .controls__slider--volume {
     background: linear-gradient(to right, #bdae82 0%, #bdae82 0%, #c8c8c8 0%, #c8c8c8 100%);
