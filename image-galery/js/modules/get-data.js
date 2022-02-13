@@ -8,7 +8,7 @@ let url = 'https://api.unsplash.com/search/photos?query=random&per_page=30&orien
 const getUrl = () => {
     const searchQuery = searchInput.value;
     const newSearchQuery = searchQuery.replace(/\s/g, ',');
-    url = `https://api.unsplash.com/search/photos?query=${newSearchQuery}&per_page=20&orientation=landscape&client_id=5nl4VW3783SH8KiriINIH-NPFaPNWD__wNmWN1GXv60`;
+    url = `https://api.unsplash.com/search/photos?query=${newSearchQuery}&per_page=30&orientation=landscape&client_id=5nl4VW3783SH8KiriINIH-NPFaPNWD__wNmWN1GXv60`;
     getData();
 }
 
