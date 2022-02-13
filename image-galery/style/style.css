@@ -208,6 +208,7 @@ img {
     height: 214px;
     background-position: center;
     background-size: cover;
+    box-shadow: 0px 0px 5px 1px var(--color-orange);
 }
 
 /* --------------Page-footer-------------- */
