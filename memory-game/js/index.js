@@ -109,6 +109,13 @@ function resetGame() {
     hasFlippedCard = false;
     lockBoard = false;
     cards.forEach(card => card.addEventListener('click', flipCard));
+function wonGame() {
+    clearInterval(timerObserver);
+    pageBody.classList.add('page__body--lock');
+    modalVictory.classList.add('modal--show');
+    victoryMoves.innerHTML = movesCount;
+    victoryTime.innerHTML = time.innerHTML;
+};
 
     setTimeout(shuffle, 500);
     time.innerHTML = '00:00';
