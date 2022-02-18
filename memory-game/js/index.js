@@ -1,31 +1,45 @@
 const cards = document.querySelectorAll('.game__card');
-const reset = document.querySelectorAll('.game__reset');
+const scoreButton = document.querySelector('.button--score');
+const resetButton = document.querySelector('.button--reset');
+const playAgainButton = document.querySelector('.button__play-again');
+
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
 
-const time = document.querySelector('.score__time');
-let timer_observer;
+let click = -1;
 
+const time = document.querySelector('.result__time');
+let timerObserver;
 let seconds = 0;
 let minutes = 0;
 let seconds_str = '';
 let minutes_str = '';
-let click = -1;
+
+const moves = document.querySelector('.result__moves');
+let movesCount = 0;
+
+const pageBody = document.querySelector('.page__body');
+const modals = document.querySelectorAll('.modal');
+const closeButtons = document.querySelectorAll('.button__close');
+
+const modalVictory = document.querySelector('.modal--victory');
+const victoryMoves = document.querySelector('.victory__moves');
+const victoryTime = document.querySelector('.victory__time');
+
+const modalScore = document.querySelector('.modal--score');
+
+const maxCards = cards.length;
+let countMatches = 0;
 
 shuffle();
 
-function startTime(seconds, minutes) {
-    timer_observer = setInterval(() => {
-        seconds > 58 ? ((minutes += 1), (seconds = 0)) : (seconds += 1);
-        seconds_str = seconds > 9 ? `${seconds}` : `0${seconds}`;
-        minutes_str = minutes > 9 ? `${minutes}` : `0${minutes}`;
-        time.innerHTML = `${minutes_str}:${seconds_str}`;
-        // if () {
-        // 	return;
-        // }
-    }, 1000);
-}
+function shuffle() {
+    cards.forEach(card => {
+        let ramdomPos = Math.floor(Math.random() * 16);
+        card.style.order = ramdomPos;
+    });
+};
 
 function flipCard() {
     if (click === -1) {
@@ -46,23 +60,28 @@ function flipCard() {
     }
 
     secondCard = this;
-
+    movesCount += 1;
+    moves.innerHTML = movesCount;
     checkForMatch();
-}
+};
 
 function checkForMatch() {
     if (firstCard.dataset.name === secondCard.dataset.name) {
         disableCards();
+        countMatches += 1;
+        if (countMatches === maxCards / 2) {
+            wonGame();
+        }
         return;
     }
     unflipCards();
-}
+};
 
 function disableCards() {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
     resetBoard();
-}
+};
 
 function unflipCards() {
     lockBoard = true;
@@ -71,31 +90,58 @@ function unflipCards() {
         secondCard.classList.remove('flip');
         resetBoard();
     }, 1500);
-}
+};
 
 function resetBoard() {
     [hasFlippedCard, lockBoard] = [false, false];
     [firstCard, secondCard] = [null, null];
-}
+};
 
-function shuffle() {
-    cards.forEach(card => {
-        let ramdomPos = Math.floor(Math.random() * 16);
-        card.style.order = ramdomPos;
-    });
+function startTime(seconds, minutes) {
+    timerObserver = setInterval(() => {
+        seconds > 58 ? ((minutes += 1), (seconds = 0)) : (seconds += 1);
+        seconds_str = seconds > 9 ? `${seconds}` : `0${seconds}`;
+        minutes_str = minutes > 9 ? `${minutes}` : `0${minutes}`;
+        time.innerHTML = `${minutes_str}:${seconds_str}`;
+    }, 1000);
 };
 
 function resetGame() {
-    cards.forEach(card => card.classList.remove('flip'));
-    hasFlippedCard = false;
-    lockBoard = false;
-    cards.forEach(card => card.addEventListener('click', flipCard));
-
-    setTimeout(shuffle, 500);
-    time.innerHTML = '00:00';
+    resetBoard();
     click = -1;
-    clearInterval(timer_observer);
-}
+    movesCount = 0;
+    moves.innerHTML = movesCount;
+    time.innerHTML = '00:00';
 
+    clearInterval(timerObserver);
+
+    cards.forEach(card => card.classList.remove('flip'));
+    setTimeout(shuffle, 400);
+
+    cards.forEach(card => card.addEventListener('click', flipCard));
+};
+
+function wonGame() {
+    clearInterval(timerObserver);
+    pageBody.classList.add('page__body--lock');
+    modalVictory.classList.add('modal--show');
+    victoryMoves.innerHTML = movesCount;
+    victoryTime.innerHTML = time.innerHTML;
+};
+
+const closeModal = () => {
+    pageBody.classList.remove('page__body--lock');
+    modals.forEach(modal => modal.classList.remove('modal--show'));
+};
+
+const openScore = () => {
+    pageBody.classList.add('page__body--lock');
+    modalScore.classList.add('modal--show');
+};
+
+scoreButton.addEventListener('click', openScore);
+resetButton.addEventListener('click', resetGame);
+playAgainButton.addEventListener('click', resetGame);
+playAgainButton.addEventListener('click', closeModal);
 cards.forEach(card => card.addEventListener('click', flipCard));
-reset.forEach(card => card.addEventListener('click', resetGame));
+closeButtons.forEach(button => button.addEventListener('click', closeModal));

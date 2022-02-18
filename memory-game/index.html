@@ -15,12 +15,21 @@
         <header class="page-header">
             <div class="container">
                 <h1 class="page-header__title">Memory Game</h1>
-                <div class="page-header__score score">
-                    <span class="score__time">00:00</span>
-                    <span class="score__moves"></span>
-                    <button class="button game__reset">Reset</button>
+                <div class="page-header__result result">
+                    <div>
+                        <p class="result__text">Time:
+                            <span class="result__time">00:00</span>
+                        </p>
+                        <p class="result__text">Moves:
+                            <span class="result__moves">0</span>
+                        </p>
+                    </div>
+                    <div>
+                        <button class="button button__game button--reset">Reset</button>
+                        <button class="button button__game button--score">Score</button>
+                    </div>
                 </div>
-            </div>  
+            </div>
             <div class="line"></div>
         </header>
         <main class="page-main">
@@ -28,130 +37,162 @@
                 <section class="game">
                     <div class="game__card" data-name="gendalf">
                         <div class="game__back-card">
-                            <img src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300"
+                                height="150">
                         </div>
                         <div class="game__front-card">
-                            <img src="./assets/images/front-card/gandalf.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/front-card/gandalf.jpg" width="300"
+                                height="150">
                         </div>
                     </div>
                     <div class="game__card" data-name="gendalf">
                         <div class="game__back-card">
-                            <img src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300"
+                                height="150">
                         </div>
                         <div class="game__front-card">
-                            <img src="./assets/images/front-card/gandalf.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/front-card/gandalf.jpg" width="300"
+                                height="150">
                         </div>
                     </div>
                     <div class="game__card" data-name="bilbo">
                         <div class="game__back-card">
-                            <img src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300"
+                                height="150">
                         </div>
                         <div class="game__front-card">
-                            <img src="./assets/images/front-card/bilbo.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/front-card/bilbo.jpg" width="300"
+                                height="150">
                         </div>
                     </div>
                     <div class="game__card" data-name="bilbo">
                         <div class="game__back-card">
-                            <img src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300"
+                                height="150">
                         </div>
                         <div class="game__front-card">
-                            <img src="./assets/images/front-card/bilbo.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/front-card/bilbo.jpg" width="300"
+                                height="150">
                         </div>
                     </div>
                     <div class="game__card" data-name="frodo">
                         <div class="game__back-card">
-                            <img src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300"
+                                height="150">
                         </div>
                         <div class="game__front-card">
-                            <img src="./assets/images/front-card/frodo.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/front-card/frodo.jpg" width="300"
+                                height="150">
                         </div>
                     </div>
                     <div class="game__card" data-name="frodo">
                         <div class="game__back-card">
-                            <img src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300"
+                                height="150">
                         </div>
                         <div class="game__front-card">
-                            <img src="./assets/images/front-card/frodo.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/front-card/frodo.jpg" width="300"
+                                height="150">
                         </div>
                     </div>
                     <div class="game__card" data-name="gimli">
                         <div class="game__back-card">
-                            <img src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300"
+                                height="150">
                         </div>
                         <div class="game__front-card">
-                            <img src="./assets/images/front-card/gimli.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/front-card/gimli.jpg" width="300"
+                                height="150">
                         </div>
                     </div>
                     <div class="game__card" data-name="gimli">
                         <div class="game__back-card">
-                            <img src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300"
+                                height="150">
                         </div>
                         <div class="game__front-card">
-                            <img src="./assets/images/front-card/gimli.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/front-card/gimli.jpg" width="300"
+                                height="150">
                         </div>
                     </div>
                     <div class="game__card" data-name="gollum">
                         <div class="game__back-card">
-                            <img src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300"
+                                height="150">
                         </div>
                         <div class="game__front-card">
-                            <img src="./assets/images/front-card/gollum.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/front-card/gollum.jpg" width="300"
+                                height="150">
                         </div>
                     </div>
                     <div class="game__card" data-name="gollum">
                         <div class="game__back-card">
-                            <img src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300"
+                                height="150">
                         </div>
                         <div class="game__front-card">
-                            <img src="./assets/images/front-card/gollum.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/front-card/gollum.jpg" width="300"
+                                height="150">
                         </div>
                     </div>
-                    <div class="game__card" data-name="legola">
+                    <div class="game__card" data-name="legolas">
                         <div class="game__back-card">
-                            <img src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300"
+                                height="150">
                         </div>
                         <div class="game__front-card">
-                            <img src="./assets/images/front-card/legolas.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/front-card/legolas.jpg" width="300"
+                                height="150">
                         </div>
                     </div>
-                    <div class="game__card" data-name="legola">
+                    <div class="game__card" data-name="legolas">
                         <div class="game__back-card">
-                            <img src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300"
+                                height="150">
                         </div>
                         <div class="game__front-card">
-                            <img src="./assets/images/front-card/legolas.jpg" width="300" height="150">
-                        </div>
-                    </div>
-                    <div class="game__card" data-name="sauron">
-                        <div class="game__back-card">
-                            <img src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300" height="150">
-                        </div>
-                        <div class="game__front-card">
-                            <img src="./assets/images/front-card/sauron.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/front-card/legolas.jpg" width="300"
+                                height="150">
                         </div>
                     </div>
                     <div class="game__card" data-name="sauron">
                         <div class="game__back-card">
-                            <img src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300"
+                                height="150">
                         </div>
                         <div class="game__front-card">
-                            <img src="./assets/images/front-card/sauron.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/front-card/sauron.jpg" width="300"
+                                height="150">
+                        </div>
+                    </div>
+                    <div class="game__card" data-name="sauron">
+                        <div class="game__back-card">
+                            <img class="game__image" src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300"
+                                height="150">
+                        </div>
+                        <div class="game__front-card">
+                            <img class="game__image" src="./assets/images/front-card/sauron.jpg" width="300"
+                                height="150">
                         </div>
                     </div>
                     <div class="game__card" data-name="radagast">
                         <div class="game__back-card">
-                            <img src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300"
+                                height="150">
                         </div>
                         <div class="game__front-card">
-                            <img src="./assets/images/front-card/radagast.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/front-card/radagast.jpg" width="300"
+                                height="150">
                         </div>
                     </div>
                     <div class="game__card" data-name="radagast">
                         <div class="game__back-card">
-                            <img src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/back-card/lorg-of-the-rings.jpg" width="300"
+                                height="150">
                         </div>
                         <div class="game__front-card">
-                            <img src="./assets/images/front-card/radagast.jpg" width="300" height="150">
+                            <img class="game__image" src="./assets/images/front-card/radagast.jpg" width="300"
+                                height="150">
                         </div>
                     </div>
                 </section>
@@ -190,6 +231,56 @@
                 </a>
             </div>
         </footer>
+        <div class="modal modal--victory victory">
+            <button class="button button__close" type="button" aria-label="Close modal">
+            </button>
+            <p class="victory__text">Congratulations!<br> You won!</p>
+            <p class="victory__text">Name: <span class="victory__user">Player</span></p>
+            <p class="victory__text">Moves: <span class="victory__moves">0</span></p>
+            <p class="victory__text">Time: <span class="victory__time">00:00</span></p>
+            <button class="button button__game button__play-again">Play again</button>
+        </div>
+
+        <div class="modal modal--score score">
+            <button class="button button__close" type="button" aria-label="Close modal">
+            </button>
+            <table class="score__table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Moves</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p class="score-username">Player1</p>
+                        </td>
+                        <td>
+                            <p class="score-moves">20</p>
+                        </td>
+                        <td>
+                            <p class="score-time">01:55</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="score-username">Player</p>
+
+                        </td>
+                        <td>
+                            <p class="score-moves">10</p>
+
+                        </td>
+                        <td>
+                            <p class="score-time">00:55</p>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     <script src="./js/index.js" type="module"></script>
 </body>
