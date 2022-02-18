@@ -122,5 +122,9 @@ const closeModal = () => {
     modals.forEach(modal => modal.classList.remove('modal--show'));
 };
 
+const openScore = () => {
+    pageBody.classList.add('page__body--lock');
+    modalScore.classList.add('modal--show');
+};
 cards.forEach(card => card.addEventListener('click', flipCard));
 reset.forEach(card => card.addEventListener('click', resetGame));
