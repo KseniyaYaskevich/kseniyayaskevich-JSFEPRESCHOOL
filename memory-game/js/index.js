@@ -110,6 +110,7 @@ function resetGame() {
     resetBoard();
     click = -1;
     movesCount = 0;
+    countMatches = 0;
     moves.innerHTML = movesCount;
     time.innerHTML = '00:00';
 
@@ -122,6 +123,7 @@ function resetGame() {
 };
 
 function wonGame() {
+    countMatches = 0;
     clearInterval(timerObserver);
     pageBody.classList.add('page__body--lock');
     modalVictory.classList.add('modal--show');
