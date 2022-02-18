@@ -34,17 +34,12 @@ let countMatches = 0;
 
 shuffle();
 
-function startTime(seconds, minutes) {
-    timer_observer = setInterval(() => {
-        seconds > 58 ? ((minutes += 1), (seconds = 0)) : (seconds += 1);
-        seconds_str = seconds > 9 ? `${seconds}` : `0${seconds}`;
-        minutes_str = minutes > 9 ? `${minutes}` : `0${minutes}`;
-        time.innerHTML = `${minutes_str}:${seconds_str}`;
-        // if () {
-        // 	return;
-        // }
-    }, 1000);
-}
+function shuffle() {
+    cards.forEach(card => {
+        let ramdomPos = Math.floor(Math.random() * 16);
+        card.style.order = ramdomPos;
+    });
+};
 
 function flipCard() {
     if (click === -1) {
@@ -65,23 +60,28 @@ function flipCard() {
     }
 
     secondCard = this;
-
+    movesCount += 1;
+    moves.innerHTML = movesCount;
     checkForMatch();
-}
+};
 
 function checkForMatch() {
     if (firstCard.dataset.name === secondCard.dataset.name) {
         disableCards();
+        countMatches += 1;
+        if (countMatches === maxCards / 2) {
+            wonGame();
+        }
         return;
     }
     unflipCards();
-}
+};
 
 function disableCards() {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
     resetBoard();
-}
+};
 
 function unflipCards() {
     lockBoard = true;
@@ -90,25 +90,37 @@ function unflipCards() {
         secondCard.classList.remove('flip');
         resetBoard();
     }, 1500);
-}
+};
 
 function resetBoard() {
     [hasFlippedCard, lockBoard] = [false, false];
     [firstCard, secondCard] = [null, null];
-}
+};
 
-function shuffle() {
-    cards.forEach(card => {
-        let ramdomPos = Math.floor(Math.random() * 16);
-        card.style.order = ramdomPos;
-    });
+function startTime(seconds, minutes) {
+    timerObserver = setInterval(() => {
+        seconds > 58 ? ((minutes += 1), (seconds = 0)) : (seconds += 1);
+        seconds_str = seconds > 9 ? `${seconds}` : `0${seconds}`;
+        minutes_str = minutes > 9 ? `${minutes}` : `0${minutes}`;
+        time.innerHTML = `${minutes_str}:${seconds_str}`;
+    }, 1000);
 };
 
 function resetGame() {
+    resetBoard();
+    click = -1;
+    movesCount = 0;
+    moves.innerHTML = movesCount;
+    time.innerHTML = '00:00';
+
+    clearInterval(timerObserver);
+
     cards.forEach(card => card.classList.remove('flip'));
-    hasFlippedCard = false;
-    lockBoard = false;
+    setTimeout(shuffle, 400);
+
     cards.forEach(card => card.addEventListener('click', flipCard));
+};
+
 function wonGame() {
     clearInterval(timerObserver);
     pageBody.classList.add('page__body--lock');
@@ -126,6 +138,7 @@ const openScore = () => {
     pageBody.classList.add('page__body--lock');
     modalScore.classList.add('modal--show');
 };
+
 scoreButton.addEventListener('click', openScore);
 resetButton.addEventListener('click', resetGame);
 playAgainButton.addEventListener('click', resetGame);
