@@ -126,5 +126,9 @@ const openScore = () => {
     pageBody.classList.add('page__body--lock');
     modalScore.classList.add('modal--show');
 };
+scoreButton.addEventListener('click', openScore);
+resetButton.addEventListener('click', resetGame);
+playAgainButton.addEventListener('click', resetGame);
+playAgainButton.addEventListener('click', closeModal);
 cards.forEach(card => card.addEventListener('click', flipCard));
-reset.forEach(card => card.addEventListener('click', resetGame));
+closeButtons.forEach(button => button.addEventListener('click', closeModal));
