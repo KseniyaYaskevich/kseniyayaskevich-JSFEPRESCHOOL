@@ -117,11 +117,10 @@ function wonGame() {
     victoryTime.innerHTML = time.innerHTML;
 };
 
-    setTimeout(shuffle, 500);
-    time.innerHTML = '00:00';
-    click = -1;
-    clearInterval(timer_observer);
-}
+const closeModal = () => {
+    pageBody.classList.remove('page__body--lock');
+    modals.forEach(modal => modal.classList.remove('modal--show'));
+};
 
 cards.forEach(card => card.addEventListener('click', flipCard));
 reset.forEach(card => card.addEventListener('click', resetGame));
