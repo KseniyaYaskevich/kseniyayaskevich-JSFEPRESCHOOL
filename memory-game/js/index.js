@@ -1,17 +1,36 @@
 const cards = document.querySelectorAll('.game__card');
-const reset = document.querySelectorAll('.game__reset');
+const scoreButton = document.querySelector('.button--score');
+const resetButton = document.querySelector('.button--reset');
+const playAgainButton = document.querySelector('.button__play-again');
+
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
 
-const time = document.querySelector('.score__time');
-let timer_observer;
+let click = -1;
 
+const time = document.querySelector('.result__time');
+let timerObserver;
 let seconds = 0;
 let minutes = 0;
 let seconds_str = '';
 let minutes_str = '';
-let click = -1;
+
+const moves = document.querySelector('.result__moves');
+let movesCount = 0;
+
+const pageBody = document.querySelector('.page__body');
+const modals = document.querySelectorAll('.modal');
+const closeButtons = document.querySelectorAll('.button__close');
+
+const modalVictory = document.querySelector('.modal--victory');
+const victoryMoves = document.querySelector('.victory__moves');
+const victoryTime = document.querySelector('.victory__time');
+
+const modalScore = document.querySelector('.modal--score');
+
+const maxCards = cards.length;
+let countMatches = 0;
 
 shuffle();
 
