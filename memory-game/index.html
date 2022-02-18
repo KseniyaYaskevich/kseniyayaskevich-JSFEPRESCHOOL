@@ -15,12 +15,20 @@
         <header class="page-header">
             <div class="container">
                 <h1 class="page-header__title">Memory Game</h1>
-                <div class="page-header__score score">
-                    <span class="score__time">00:00</span>
-                    <span class="score__moves"></span>
-                    <button class="button game__reset">Reset</button>
+                <div class="page-header__result result">
+                    <div>
+                        <p class="result__text">Time:
+                            <span class="result__time">00:00</span>
+                        </p>
+                        <p class="result__text">Moves:
+                            <span class="result__moves">0</span>
+                        </p>
+                    </div>
+                    <div>
+                        <button class="button button__game button--reset">Reset</button>
+                    </div>
                 </div>
-            </div>  
+            </div>
             <div class="line"></div>
         </header>
         <main class="page-main">
