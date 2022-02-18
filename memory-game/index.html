@@ -190,6 +190,56 @@
                 </a>
             </div>
         </footer>
+        <div class="modal modal--victory victory">
+            <button class="button button__close" type="button" aria-label="Close modal">
+            </button>
+            <p class="victory__text">Congratulations!<br> You won!</p>
+            <p class="victory__text">Name: <span class="victory__user">Player</span></p>
+            <p class="victory__text">Moves: <span class="victory__moves">0</span></p>
+            <p class="victory__text">Time: <span class="victory__time">00:00</span></p>
+            <button class="button button__game button__play-again">Play again</button>
+        </div>
+
+        <div class="modal modal--score score">
+            <button class="button button__close" type="button" aria-label="Close modal">
+            </button>
+            <table class="score__table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Moves</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p class="score-username">Player1</p>
+                        </td>
+                        <td>
+                            <p class="score-moves">20</p>
+                        </td>
+                        <td>
+                            <p class="score-time">01:55</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="score-username">Player</p>
+
+                        </td>
+                        <td>
+                            <p class="score-moves">10</p>
+
+                        </td>
+                        <td>
+                            <p class="score-time">00:55</p>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     <script src="./js/index.js" type="module"></script>
 </body>
