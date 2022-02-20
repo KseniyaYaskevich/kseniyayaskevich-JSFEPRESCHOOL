@@ -128,7 +128,7 @@ function startTime(seconds, minutes) {
     }, 1000);
 };
 
-function resetGame() {
+function newGame() {
     resetBoard();
     click = -1;
     movesCount = 0;
@@ -164,8 +164,8 @@ const openScore = () => {
 };
 
 scoreButton.addEventListener('click', openScore);
-resetButton.addEventListener('click', resetGame);
-playAgainButton.addEventListener('click', resetGame);
+resetButton.addEventListener('click', newGame);
+playAgainButton.addEventListener('click', newGame);
 playAgainButton.addEventListener('click', closeModal);
 cards.forEach(card => card.addEventListener('click', flipCard));
 closeButtons.forEach(button => button.addEventListener('click', closeModal));
