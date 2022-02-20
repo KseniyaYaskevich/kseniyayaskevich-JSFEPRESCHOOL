@@ -205,3 +205,8 @@ const login = () => {
     }
     resultUserName.textContent = userName;
 }
+
+const changeName = () => {
+    modalLogin.classList.add('modal--show');
+    resultUserName.textContent = userName;
+}
