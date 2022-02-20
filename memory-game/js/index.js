@@ -148,3 +148,20 @@ playAgainButton.addEventListener('click', resetGame);
 playAgainButton.addEventListener('click', closeModal);
 cards.forEach(card => card.addEventListener('click', flipCard));
 closeButtons.forEach(button => button.addEventListener('click', closeModal));
+const tableBody = document.querySelector('.score__body');
+let tableItem;
+const createTableTemplate = (elem, index) => {
+    tableItem =
+        `<tr p class="score-row">
+            <td>
+                <p class="score-username">${index+1} ${elem.userName}</p>
+            </td>
+            <td>
+                <p class="score-moves">${elem.moves}</p>
+            </td>
+            <td>
+                <p class="score-time">${elem.time}</p>
+            </td>
+        </tr>`;
+    tableBody.insertAdjacentHTML('beforeend', tableItem);
+};
