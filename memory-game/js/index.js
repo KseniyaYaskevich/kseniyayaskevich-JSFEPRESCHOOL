@@ -174,3 +174,15 @@ const deleteTableTemplate = () => {
         });
     }
 }
+const getData = () => {
+    deleteTableTemplate();
+
+    scoreResults.sort(compare('time'));
+    scoreResults.sort(compare('moves'));
+
+    for (let index = 0; index < scoreResults.length; index++) {
+        if (index < 10) {
+            createTableTemplate(scoreResults[index], index)
+        }
+    }
+};
