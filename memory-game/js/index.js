@@ -210,3 +210,10 @@ const changeName = () => {
     modalLogin.classList.add('modal--show');
     resultUserName.textContent = userName;
 }
+
+const onButtonSaveClick = () => {
+    userName = loginInput.value;
+    resultUserName.textContent = userName;
+    storage.setItem('userName', userName);
+    modalLogin.classList.remove('modal--show');
+}
