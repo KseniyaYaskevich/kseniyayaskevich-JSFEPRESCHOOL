@@ -186,3 +186,14 @@ const getData = () => {
         }
     }
 };
+
+const getLocalStorage = () => {
+    deleteTableTemplate();
+    if (storage.getItem('scoreResults')) {
+        scoreResults = JSON.parse(storage.getItem('scoreResults'));
+        getData();
+    }
+    if (storage.getItem('userName')) {
+        userName = storage.getItem('userName');
+    }
+};
