@@ -34,7 +34,7 @@ img {
 
 .page__body {
     min-width: 280px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Redressed', sans-serif;
     font-size: 20px;
     background-color: var(--color-black);
     color: var(--color-white);
@@ -78,7 +78,11 @@ img {
 
 .button__game {
     position: relative;
-    padding: 7px 25px;
+
+
+    font-weight: bold;
+
+    padding: 10px 25px;
     border-radius: 20px;
     transition: background-color .5s ease;
 }
@@ -117,19 +121,27 @@ img {
 
 .page-header__result {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
 }
 
-.result__text {
-    display: inline-block;
-    margin: 0;
-    margin-bottom: 10px;
-    text-transform: uppercase;
+.result__inner {
+    min-width: 200px;
 }
 
 .result__text:first-child {
-    margin-right: 30px;
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+}
+
+.result__text {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.result__text:last-child {
+    margin-bottom: 0;
 }
 
 .button--reset {
@@ -191,7 +203,7 @@ img {
     transform: rotateY(180deg);
 }
 
-.game__image{
+.game__image {
     height: 100%;
 }
 
@@ -242,7 +254,7 @@ img {
     text-align: center;
 
     width: 80%;
-    min-height: 300px;
+    min-height: 450px;
 
     margin: auto;
     padding: 20px 40px;
@@ -251,6 +263,7 @@ img {
     border: 1px solid var(--color-orange);
 }
 
+
 .modal--show {
     display: block;
     animation-name: bounce;
@@ -258,17 +271,19 @@ img {
     z-index: 10;
 }
 
-.button__close {
+.button--cross {
     position: relative;
+    left: 47%;
     width: 50px;
     height: 50px;
+
     padding: 0;
 
     background-color: transparent;
 }
 
-.button__close::before,
-.button__close::after {
+.button--cross::before,
+.button--cross::after {
     content: "";
     position: absolute;
     left: 0;
@@ -279,24 +294,62 @@ img {
     transition: background-color .4s ease;
 }
 
-.button__close::before {
+.button--cross::before {
     transform: rotate(45deg);
 }
 
-.button__close::after {
+.button--cross::after {
     transform: rotate(-45deg);
 }
 
-.button__close:hover::before,
-.button__close:hover::after {
+.button--cross:hover::before,
+.button--cross:hover::after {
     background-color: var(--color-orange);
+}
+
+/* --------------Modal--victory-------------- */
+
+.victory__text {
+    font-size: 25px;
+}
+
+/* --------------Modal--score-------------- */
+
+.modal--score {
+    top: 5%;
+    min-height: 250px;
+}
+
+.score__table {
+    width: 100%;
+    margin-top: 10px;
+    border: 1px solid var(--color-white);
+}
+
+th {
+    padding: 20px;
+}
+
+td {
+    width: 30%;
+    border: 1px solid grey;
+}
+
+td:first-child {
+    width: 40%;
+    text-align: left;
+}
+
+td p {
+    margin: 0;
+    padding: 20px;
 }
 
 /* --------------Media-------------- */
 
 @media (max-width: 1085px) {
 
-    .game__card{
+    .game__card {
         width: 200px;
         height: 120px;
     }
@@ -304,7 +357,7 @@ img {
 
 @media (max-width: 886px) {
 
-    .game__card{
+    .game__card {
         width: 170px;
         height: 100px;
     }
@@ -325,8 +378,8 @@ img {
         perspective: 2000px;
     }
 
-    .game__card{
-        width: 130px;
+    .game__card {
+        width: 140px;
         height: 80px;
     }
 
@@ -345,7 +398,20 @@ img {
 
 @media (max-width: 589px) {
 
-    .game__card{
+    .page-header__result {
+       flex-direction: column;
+    }
+
+    .result__inner {
+        margin-bottom: 20px;
+        text-align: center;
+     }
+
+     .result__text:first-child {
+        justify-content: center;
+    }
+
+    .game__card {
         width: 90px;
         height: 60px;
     }
@@ -354,7 +420,7 @@ img {
 @media (max-width: 450px) {
 
     .page-header__title {
-        font-size: 25px;
+        font-size: 30px;
     }
 
     .game {

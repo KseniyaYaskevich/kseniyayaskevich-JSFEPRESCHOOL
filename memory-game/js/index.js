@@ -1,3 +1,5 @@
+import * as storage from './modules/storage.js'
+
 const cards = document.querySelectorAll('.game__card');
 const scoreButton = document.querySelector('.button--score');
 const resetButton = document.querySelector('.button--reset');
@@ -32,7 +34,30 @@ const modalScore = document.querySelector('.modal--score');
 const maxCards = cards.length;
 let countMatches = 0;
 
+const modalLogin = document.querySelector('.modal--login');
+const loginInput = document.querySelector('.login__input');
+const saveLogin = document.querySelector('.button--save');
+const resultUserName = document.querySelector('.result__user-name');
+let userName = '';
+
 shuffle();
+
+function compare(property) {
+    return function (a, b) {
+        var value1 = a[property];
+        var value2 = b[property];
+
+        if (value1 > value2) {
+            return 1;
+        }
+
+        if (value1 < value2) {
+            return -1;
+        }
+
+        return 0;
+    }
+}
 
 function shuffle() {
     cards.forEach(card => {
@@ -106,7 +131,7 @@ function startTime(seconds, minutes) {
     }, 1000);
 };
 
-function resetGame() {
+function newGame() {
     resetBoard();
     click = -1;
     movesCount = 0;
@@ -122,13 +147,25 @@ function resetGame() {
     cards.forEach(card => card.addEventListener('click', flipCard));
 };
 
+let scoreResults = [];
+
 function wonGame() {
-    countMatches = 0;
     clearInterval(timerObserver);
     pageBody.classList.add('page__body--lock');
     modalVictory.classList.add('modal--show');
     victoryMoves.innerHTML = movesCount;
     victoryTime.innerHTML = time.innerHTML;
+
+    let gameResults = {
+        userName: userName,
+        moves: movesCount,
+        time: time.innerHTML
+    };
+
+    deleteTableTemplate();
+    scoreResults.push(gameResults);
+    getData();
+    storage.setItem('scoreResults', JSON.stringify(scoreResults));
 };
 
 const closeModal = () => {
@@ -142,8 +179,92 @@ const openScore = () => {
 };
 
 scoreButton.addEventListener('click', openScore);
-resetButton.addEventListener('click', resetGame);
-playAgainButton.addEventListener('click', resetGame);
+resetButton.addEventListener('click', newGame);
+playAgainButton.addEventListener('click', newGame);
 playAgainButton.addEventListener('click', closeModal);
 cards.forEach(card => card.addEventListener('click', flipCard));
 closeButtons.forEach(button => button.addEventListener('click', closeModal));
+
+
+const tableBody = document.querySelector('.score__body');
+let tableItem;
+const createTableTemplate = (elem, index) => {
+    tableItem =
+        `<tr p class="score-row">
+            <td>
+                <p class="score-username">${index+1} ${elem.userName}</p>
+            </td>
+            <td>
+                <p class="score-moves">${elem.moves}</p>
+            </td>
+            <td>
+                <p class="score-time">${elem.time}</p>
+            </td>
+        </tr>`;
+    tableBody.insertAdjacentHTML('beforeend', tableItem);
+};
+
+const deleteTableTemplate = () => {
+    const elems = tableBody.querySelectorAll('.score-row');
+    if (elems) {
+        elems.forEach(element => {
+            element.remove();
+        });
+    }
+}
+const getData = () => {
+    deleteTableTemplate();
+
+    scoreResults.sort(compare('time'));
+    scoreResults.sort(compare('moves'));
+
+    for (let index = 0; index < scoreResults.length; index++) {
+        if (index < 10) {
+            createTableTemplate(scoreResults[index], index)
+        }
+    }
+};
+
+const getLocalStorage = () => {
+    deleteTableTemplate();
+    if (storage.getItem('scoreResults')) {
+        scoreResults = JSON.parse(storage.getItem('scoreResults'));
+        getData();
+    }
+    if (storage.getItem('userName')) {
+        userName = storage.getItem('userName');
+    }
+};
+
+const login = () => {
+    if (!userName) {
+        userName = 'Player';
+        changeName();
+    }
+    resultUserName.textContent = userName;
+}
+
+const changeName = () => {
+    modalLogin.classList.add('modal--show');
+    resultUserName.textContent = userName;
+}
+
+const onButtonSaveClick = () => {
+    userName = loginInput.value;
+    resultUserName.textContent = userName;
+    storage.setItem('userName', userName);
+    modalLogin.classList.remove('modal--show');
+}
+
+window.addEventListener('load', getLocalStorage);
+window.addEventListener('load', login);
+
+saveLogin.addEventListener('click', onButtonSaveClick);
+loginInput.addEventListener("keyup", function (event) {
+    event.preventDefault();
+    if (event.which == 13 || event.keyCode == 13) {
+        saveLogin.click();
+    }
+});
+
+resultUserName.addEventListener('click', changeName);

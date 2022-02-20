@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory Game</title>
     <link href="./style/normalize.css" rel="stylesheet">
+    <link href="./style/stylesheet.css" rel="stylesheet">
     <link href="./style/style.css" rel="stylesheet">
 </head>
 
@@ -16,7 +17,11 @@
             <div class="container">
                 <h1 class="page-header__title">Memory Game</h1>
                 <div class="page-header__result result">
-                    <div>
+                    <div class="result__inner">
+                        <p class="result__text">
+                            <img src="./assets/svg/outline.svg" width="24" height="24">
+                            <span class="result__user-name">Player</span>
+                        </p>
                         <p class="result__text">Time:
                             <span class="result__time">00:00</span>
                         </p>
@@ -231,8 +236,16 @@
                 </a>
             </div>
         </footer>
+        <div class="modal modal--login login">
+            <button class="button button__close button--cross" type="button" aria-label="Close modal">
+            </button>
+            <p>Enter your name</p>
+            <input class="login__input" type="text" placeholder="Name">
+            <button class="button button__game button--save">Save</button>
+            <button class="button button__game button__close">Skip</button>
+        </div>
         <div class="modal modal--victory victory">
-            <button class="button button__close" type="button" aria-label="Close modal">
+            <button class="button button__close button--cross" type="button" aria-label="Close modal">
             </button>
             <p class="victory__text">Congratulations!<br> You won!</p>
             <p class="victory__text">Name: <span class="victory__user">Player</span></p>
@@ -240,44 +253,18 @@
             <p class="victory__text">Time: <span class="victory__time">00:00</span></p>
             <button class="button button__game button__play-again">Play again</button>
         </div>
-
         <div class="modal modal--score score">
-            <button class="button button__close" type="button" aria-label="Close modal">
+            <button class="button button__close button--cross" type="button" aria-label="Close modal">
             </button>
             <table class="score__table">
-                <thead>
+                <thead class="score__head">
                     <tr>
                         <th>Username</th>
                         <th>Moves</th>
                         <th>Time</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <p class="score-username">Player1</p>
-                        </td>
-                        <td>
-                            <p class="score-moves">20</p>
-                        </td>
-                        <td>
-                            <p class="score-time">01:55</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p class="score-username">Player</p>
-
-                        </td>
-                        <td>
-                            <p class="score-moves">10</p>
-
-                        </td>
-                        <td>
-                            <p class="score-time">00:55</p>
-
-                        </td>
-                    </tr>
+                <tbody class="score__body">
                 </tbody>
             </table>
         </div>
