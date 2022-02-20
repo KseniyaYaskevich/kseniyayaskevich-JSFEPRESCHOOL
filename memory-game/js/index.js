@@ -35,6 +35,22 @@ let countMatches = 0;
 
 shuffle();
 
+function compare(property) {
+    return function (a, b) {
+        var value1 = a[property];
+        var value2 = b[property];
+
+        if (value1 > value2) {
+            return 1;
+        }
+
+        if (value1 < value2) {
+            return -1;
+        }
+
+        return 0;
+    }
+}
 function shuffle() {
     cards.forEach(card => {
         let ramdomPos = Math.floor(Math.random() * 16);
