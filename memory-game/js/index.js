@@ -1,4 +1,5 @@
 import * as storage from './modules/storage.js'
+
 const cards = document.querySelectorAll('.game__card');
 const scoreButton = document.querySelector('.button--score');
 const resetButton = document.querySelector('.button--reset');
@@ -38,6 +39,7 @@ const loginInput = document.querySelector('.login__input');
 const saveLogin = document.querySelector('.button--save');
 const resultUserName = document.querySelector('.result__user-name');
 let userName = '';
+
 shuffle();
 
 function compare(property) {
@@ -56,6 +58,7 @@ function compare(property) {
         return 0;
     }
 }
+
 function shuffle() {
     cards.forEach(card => {
         let ramdomPos = Math.floor(Math.random() * 16);
@@ -145,13 +148,14 @@ function newGame() {
 };
 
 let scoreResults = [];
+
 function wonGame() {
-    countMatches = 0;
     clearInterval(timerObserver);
     pageBody.classList.add('page__body--lock');
     modalVictory.classList.add('modal--show');
     victoryMoves.innerHTML = movesCount;
     victoryTime.innerHTML = time.innerHTML;
+
     let gameResults = {
         userName: userName,
         moves: movesCount,
@@ -180,6 +184,8 @@ playAgainButton.addEventListener('click', newGame);
 playAgainButton.addEventListener('click', closeModal);
 cards.forEach(card => card.addEventListener('click', flipCard));
 closeButtons.forEach(button => button.addEventListener('click', closeModal));
+
+
 const tableBody = document.querySelector('.score__body');
 let tableItem;
 const createTableTemplate = (elem, index) => {
