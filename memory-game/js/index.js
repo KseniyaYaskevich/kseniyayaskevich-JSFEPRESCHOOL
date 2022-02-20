@@ -33,6 +33,11 @@ const modalScore = document.querySelector('.modal--score');
 const maxCards = cards.length;
 let countMatches = 0;
 
+const modalLogin = document.querySelector('.modal--login');
+const loginInput = document.querySelector('.login__input');
+const saveLogin = document.querySelector('.button--save');
+const resultUserName = document.querySelector('.result__user-name');
+let userName = '';
 shuffle();
 
 function compare(property) {
