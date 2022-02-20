@@ -1,3 +1,4 @@
+import * as storage from './modules/storage.js'
 const cards = document.querySelectorAll('.game__card');
 const scoreButton = document.querySelector('.button--score');
 const resetButton = document.querySelector('.button--reset');
