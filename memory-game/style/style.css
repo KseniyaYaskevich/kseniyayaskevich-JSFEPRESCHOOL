@@ -292,6 +292,44 @@ img {
     background-color: var(--color-orange);
 }
 
+/* --------------Modal--victory-------------- */
+
+.victory__text {
+    font-size: 25px;
+}
+
+/* --------------Modal--score-------------- */
+
+.modal--score {
+    top: 5%;
+    min-height: 250px;
+}
+
+.score__table {
+    width: 100%;
+    margin-top: 10px;
+    border: 1px solid var(--color-white);
+}
+
+th {
+    padding: 20px;
+}
+
+td {
+    width: 30%;
+    border: 1px solid grey;
+}
+
+td:first-child {
+    width: 40%;
+    text-align: left;
+}
+
+td p {
+    margin: 0;
+    padding: 20px;
+}
+
 /* --------------Media-------------- */
 
 @media (max-width: 1085px) {
