@@ -144,6 +144,7 @@ function newGame() {
     cards.forEach(card => card.addEventListener('click', flipCard));
 };
 
+let scoreResults = [];
 function wonGame() {
     countMatches = 0;
     clearInterval(timerObserver);
@@ -151,6 +152,16 @@ function wonGame() {
     modalVictory.classList.add('modal--show');
     victoryMoves.innerHTML = movesCount;
     victoryTime.innerHTML = time.innerHTML;
+    let gameResults = {
+        userName: userName,
+        moves: movesCount,
+        time: time.innerHTML
+    };
+
+    deleteTableTemplate();
+    scoreResults.push(gameResults);
+    getData();
+    storage.setItem('scoreResults', JSON.stringify(scoreResults));
 };
 
 const closeModal = () => {
