@@ -197,3 +197,11 @@ const getLocalStorage = () => {
         userName = storage.getItem('userName');
     }
 };
+
+const login = () => {
+    if (!userName) {
+        userName = 'Player';
+        changeName();
+    }
+    resultUserName.textContent = userName;
+}
