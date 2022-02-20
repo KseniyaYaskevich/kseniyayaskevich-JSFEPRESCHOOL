@@ -217,3 +217,16 @@ const onButtonSaveClick = () => {
     storage.setItem('userName', userName);
     modalLogin.classList.remove('modal--show');
 }
+
+window.addEventListener('load', getLocalStorage);
+window.addEventListener('load', login);
+
+saveLogin.addEventListener('click', onButtonSaveClick);
+loginInput.addEventListener("keyup", function (event) {
+    event.preventDefault();
+    if (event.which == 13 || event.keyCode == 13) {
+        saveLogin.click();
+    }
+});
+
+resultUserName.addEventListener('click', changeName);
