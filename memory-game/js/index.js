@@ -165,3 +165,12 @@ const createTableTemplate = (elem, index) => {
         </tr>`;
     tableBody.insertAdjacentHTML('beforeend', tableItem);
 };
+
+const deleteTableTemplate = () => {
+    const elems = tableBody.querySelectorAll('.score-row');
+    if (elems) {
+        elems.forEach(element => {
+            element.remove();
+        });
+    }
+}
