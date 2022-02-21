@@ -70,28 +70,23 @@ img {
 }
 
 .button {
-    padding: 0;
-
-    border: none;
-    cursor: pointer;
-}
-
-.button__game {
     position: relative;
-
+    padding: 10px 25px;
 
     font-weight: bold;
 
-    padding: 10px 25px;
+    border: none;
     border-radius: 20px;
     transition: background-color .5s ease;
+
+    cursor: pointer;
 }
 
-.button__game:hover {
+.button:hover {
     background-color: var(--color-orange);
 }
 
-.button__game:active {
+.button:active {
     top: 2px;
 }
 
@@ -129,10 +124,23 @@ img {
     min-width: 200px;
 }
 
-.result__text:first-child {
+.result__user {
     display: flex;
     align-items: flex-end;
+
+    color: var(--color-white);
+    transition: color .5s ease;
+
     cursor: pointer;
+}
+
+.result__user:hover {
+    color: var(--color-orange);
+    ;
+}
+
+.result__icon {
+    fill: currentColor;
 }
 
 .result__text {
@@ -233,6 +241,10 @@ img {
     color: var(--color-orange);
 }
 
+.contacts__icon {
+    fill: currentColor;
+}
+
 .page-footer__logo {
     fill: var(--color-white);
     transition: fill .5s ease;
@@ -247,20 +259,24 @@ img {
 .modal {
     display: none;
     position: fixed;
-    top: 25%;
+    top: 15%;
     left: 0;
     right: 0;
 
     text-align: center;
 
+    max-width: 1000px;
     width: 80%;
     min-height: 450px;
+    
 
     margin: auto;
     padding: 20px 40px;
 
     background-color: var(--color-black);
     border: 1px solid var(--color-orange);
+
+    overflow: auto;
 }
 
 
@@ -271,7 +287,7 @@ img {
     z-index: 10;
 }
 
-.button--cross {
+.button__cross {
     position: relative;
     left: 47%;
     width: 50px;
@@ -280,10 +296,13 @@ img {
     padding: 0;
 
     background-color: transparent;
+    border: none;
+
+    cursor: pointer;
 }
 
-.button--cross::before,
-.button--cross::after {
+.button__cross::before,
+.button__cross::after {
     content: "";
     position: absolute;
     left: 0;
@@ -294,30 +313,43 @@ img {
     transition: background-color .4s ease;
 }
 
-.button--cross::before {
+.button__cross::before {
     transform: rotate(45deg);
 }
 
-.button--cross::after {
+.button__cross::after {
     transform: rotate(-45deg);
 }
 
-.button--cross:hover::before,
-.button--cross:hover::after {
+.button__cross:hover::before,
+.button__cross:hover::after {
     background-color: var(--color-orange);
 }
 
+/* --------------Modal--login-------------- */
 /* --------------Modal--victory-------------- */
 
+.modal--login {
+    width: 60%;
+    min-height: 300px;
+}
+
+.login__text,
 .victory__text {
     font-size: 25px;
+}
+
+.login__input {
+    min-width: 150px;
+    width: 50%;
+    margin-bottom: 25px;
 }
 
 /* --------------Modal--score-------------- */
 
 .modal--score {
-    top: 5%;
-    min-height: 250px;
+    top: 0;
+    height: 100%;
 }
 
 .score__table {
@@ -399,21 +431,25 @@ td p {
 @media (max-width: 589px) {
 
     .page-header__result {
-       flex-direction: column;
+        flex-direction: column;
     }
 
     .result__inner {
         margin-bottom: 20px;
         text-align: center;
-     }
+    }
 
-     .result__text:first-child {
+    .result__user {
         justify-content: center;
     }
 
     .game__card {
         width: 90px;
         height: 60px;
+    }
+
+    .modal {
+        width: 100%;
     }
 }
 
@@ -425,6 +461,18 @@ td p {
 
     .game {
         perspective: 3000px;
+    }
+
+    .modal--score {
+        padding: 20px 0;
+    }
+
+    .score__table {
+        font-size: 15px;
+    }
+
+    .modal--score .button__cross {
+        left: 35%;
     }
 }
 

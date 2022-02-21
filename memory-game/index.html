@@ -18,9 +18,11 @@
                 <h1 class="page-header__title">Memory Game</h1>
                 <div class="page-header__result result">
                     <div class="result__inner">
-                        <p class="result__text">
-                            <img src="./assets/svg/outline.svg" width="24" height="24">
-                            <span class="result__user-name">Player</span>
+                        <p class="result__text result__user">
+                            <svg class="result__icon" width="24" height="24">
+                                <use xlink:href="./assets/svg/sprite.svg#outline"></use>
+                            </svg>
+                            <span class="result__user-name"></span>
                         </p>
                         <p class="result__text">Time:
                             <span class="result__time">00:00</span>
@@ -30,8 +32,8 @@
                         </p>
                     </div>
                     <div>
-                        <button class="button button__game button--reset">Reset</button>
-                        <button class="button button__game button--score">Score</button>
+                        <button class="button button--reset">Reset</button>
+                        <button class="button button--score">Score</button>
                     </div>
                 </div>
             </div>
@@ -39,6 +41,9 @@
         </header>
         <main class="page-main">
             <div class="container">
+                <!-- <div class="game__choose-level">
+                    <button class="choose-level__button"></button>
+                </div> -->
                 <section class="game">
                     <div class="game__card" data-name="gendalf">
                         <div class="game__back-card">
@@ -237,24 +242,26 @@
             </div>
         </footer>
         <div class="modal modal--login login">
-            <button class="button button__close button--cross" type="button" aria-label="Close modal">
+            <button class="button__cross js-button-close" type="button" aria-label="Close modal">
             </button>
-            <p>Enter your name</p>
-            <input class="login__input" type="text" placeholder="Name">
-            <button class="button button__game button--save">Save</button>
-            <button class="button button__game button__close">Skip</button>
+            <p class="login__text">Please enter your name</p>
+            <input class="login__input" type="text" placeholder="Name" autocomplete="off" autofocus>
+            <div>
+                <button class="button button--save">Save</button>
+                <button class="button js-button-close">Skip</button>
+            </div>
         </div>
         <div class="modal modal--victory victory">
-            <button class="button button__close button--cross" type="button" aria-label="Close modal">
+            <button class="button__cross js-button-close" type="button" aria-label="Close modal">
             </button>
             <p class="victory__text">Congratulations!<br> You won!</p>
             <p class="victory__text">Name: <span class="victory__user">Player</span></p>
             <p class="victory__text">Moves: <span class="victory__moves">0</span></p>
             <p class="victory__text">Time: <span class="victory__time">00:00</span></p>
-            <button class="button button__game button__play-again">Play again</button>
+            <button class="button button__play-again">Play again</button>
         </div>
         <div class="modal modal--score score">
-            <button class="button button__close button--cross" type="button" aria-label="Close modal">
+            <button class="button__cross js-button-close" type="button" aria-label="Close modal">
             </button>
             <table class="score__table">
                 <thead class="score__head">
